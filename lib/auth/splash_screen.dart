@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,6 +20,7 @@ class _SplashScreenState extends State<SplashScreen>
   late final AnimationController _pulseController;
   late final Animation<double> _fadeAnimation;
   late final Animation<double> _pulseAnimation;
+  Timer? _navigationTimer;
 
   @override
   void initState() {
@@ -49,10 +52,17 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     _fadeController.forward();
+
+    // Navigasi ke halaman login setelah 3 detik
+    _navigationTimer = Timer(const Duration(seconds: 3), () {
+      if (!mounted) return;
+      Navigator.of(context).pushReplacementNamed('/login');
+    });
   }
 
   @override
   void dispose() {
+    _navigationTimer?.cancel();
     _fadeController.dispose();
     _pulseController.dispose();
     super.dispose();

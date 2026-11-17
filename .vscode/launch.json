@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "SIKARA (Debug)",
+      "request": "launch",
+      "type": "dart",
+      "args": [
+        "--no-enable-impeller"
+      ]
+    }
+  ]
+}

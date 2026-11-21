@@ -114,6 +114,14 @@ class _SplashScreenState extends State<SplashScreen>
                               child: Image.network(
                                 'https://lh3.googleusercontent.com/aida-public/AB6AXuCsM9u4MICzjibooWfJ5IqX-OZBwTLug20JnbAGX6pnK_Mqn1Z295bq3Osp-OOzbyY5Y-lbLTX8-VbC72gK0xwJ5KEDHR8b_ZFCviQK81rDiOP7sy9_OkiJOseZ8y4wWAKOWclwlppeDPsUe_16LjW4kMnFBZq8QTyt49VFmV15Wl9OeIUtM56sn_2_dYEhuyuIZA5rE0ZfKWck2FlBl8W98ChR-37q_W8Y0ug0a3wSdDNR5IH_BeKuyBJ8nTIeArsKpw',
                                 fit: BoxFit.contain,
+                                loadingBuilder: (context, child, loadingProgress) {
+                                  if (loadingProgress == null) return child;
+                                  return const Icon(
+                                    Icons.eco_rounded,
+                                    size: 110,
+                                    color: primaryColor,
+                                  );
+                                },
                                 errorBuilder: (context, error, stackTrace) {
                                   return const Icon(
                                     Icons.eco_rounded,

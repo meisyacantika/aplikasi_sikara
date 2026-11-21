@@ -1,8 +1,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Required for network images and Flutter debugging -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:label="aplikasi_sikara"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- Disable Impeller at application level: fixes black screen on x86_64 emulators (OpenGLES) -->
+        <meta-data
+            android:name="io.flutter.embedding.android.EnableImpeller"
+            android:value="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -20,7 +29,7 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
-            <!-- Disable Impeller: fixes black screen on x86_64 emulators (OpenGLES) -->
+            <!-- Redundant activity-level Disable Impeller -->
             <meta-data
               android:name="io.flutter.embedding.android.EnableImpeller"
               android:value="false"
